@@ -3,153 +3,1178 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Ayomide Agbaje</title>
-<meta name="description" content="Ayomide Agbaje — founder, researcher, writer.">
+<title>Ayomide Agbaje — Founder &amp; Researcher</title>
+<meta name="description" content="Ayomide Agbaje — founder of Clisense and HealthDrive, building climate and health infrastructure for underserved communities in Africa. Based in Kigali, Rwanda.">
+<meta name="theme-color" content="#0f5132">
+<meta name="color-scheme" content="light dark">
+
+<!-- Open Graph / Twitter -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ayomide Agbaje">
+<meta property="og:description" content="Founder of Clisense and HealthDrive. Building climate and health infrastructure for underserved communities in Africa.">
+<meta property="og:url" content="https://agbajecity.github.io/">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Ayomide Agbaje">
+<meta name="twitter:description" content="Founder of Clisense and HealthDrive. Building climate and health infrastructure for underserved communities in Africa.">
+
+<!-- Favicon: simple emoji-based data URI, no external asset needed -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🌱</text></svg>">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
 <style>
+  /* ============ Design tokens ============ */
   :root {
-    --bg: #fafaf8;
-    --text: #1a1a1a;
-    --muted: #5a5a5a;
-    --accent: #1a5c3a;
-    --line: #e2e2de;
-    --max: 680px;
+    --bg: #faf8f4;
+    --bg-alt: #f2efe7;
+    --surface: #ffffff;
+    --text: #17201c;
+    --muted: #5a625c;
+    --muted-2: #7c847e;
+    --line: #e4e0d6;
+    --accent: #0f5132;
+    --accent-2: #b45309;
+    --accent-soft: #e9f2ec;
+    --ring: rgba(15,81,50,0.35);
+    --shadow: 0 1px 2px rgba(23,32,28,0.04), 0 8px 24px rgba(23,32,28,0.06);
+    --shadow-lg: 0 12px 32px rgba(23,32,28,0.10), 0 2px 8px rgba(23,32,28,0.06);
+    --radius: 16px;
+    --radius-sm: 10px;
+    --max: 920px;
+    --font-body: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    --font-display: 'Fraunces', Georgia, serif;
   }
+
+  :root[data-theme="dark"] {
+    --bg: #0e1310;
+    --bg-alt: #141a16;
+    --surface: #171e19;
+    --text: #eef1ee;
+    --muted: #a7b0a9;
+    --muted-2: #7d857f;
+    --line: #262f28;
+    --accent: #4ade80;
+    --accent-2: #f0a94e;
+    --accent-soft: rgba(74,222,128,0.12);
+    --ring: rgba(74,222,128,0.35);
+    --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+    --shadow-lg: 0 16px 40px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #0e1310;
+      --bg-alt: #141a16;
+      --surface: #171e19;
+      --text: #eef1ee;
+      --muted: #a7b0a9;
+      --muted-2: #7d857f;
+      --line: #262f28;
+      --accent: #4ade80;
+      --accent-2: #f0a94e;
+      --accent-soft: rgba(74,222,128,0.12);
+      --ring: rgba(74,222,128,0.35);
+      --shadow: 0 1px 2px rgba(0,0,0,0.3), 0 8px 24px rgba(0,0,0,0.35);
+      --shadow-lg: 0 16px 40px rgba(0,0,0,0.45), 0 2px 8px rgba(0,0,0,0.3);
+    }
+  }
+
   * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+    * { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; scroll-behavior: auto !important; }
+  }
+
   body {
     margin: 0;
     background: var(--bg);
     color: var(--text);
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Georgia, serif;
-    line-height: 1.6;
+    font-family: var(--font-body);
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+    transition: background 0.3s ease, color 0.3s ease;
   }
+
+  ::selection { background: var(--accent); color: var(--bg); }
+
+  a { color: inherit; text-decoration: none; }
+  img, svg { display: block; max-width: 100%; }
+
+  .skip-link {
+    position: absolute;
+    left: -999px;
+    top: auto;
+    background: var(--accent);
+    color: #fff;
+    padding: 0.75rem 1.25rem;
+    border-radius: 0 0 8px 0;
+    z-index: 200;
+    font-weight: 600;
+  }
+  .skip-link:focus {
+    left: 0;
+    top: 0;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
   .wrap {
     max-width: var(--max);
     margin: 0 auto;
-    padding: 4rem 1.5rem 5rem;
+    padding: 0 1.5rem;
   }
-  h1 {
-    font-size: 2rem;
-    margin: 0 0 0.25rem;
-    font-weight: 700;
+
+  /* ============ Scroll progress bar ============ */
+  .progress-bar {
+    position: fixed;
+    top: 0; left: 0;
+    height: 3px;
+    width: 0%;
+    background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    z-index: 300;
+    transition: width 0.08s linear;
   }
-  .tagline {
-    color: var(--muted);
-    font-size: 1.05rem;
-    margin: 0 0 2.5rem;
-  }
-  h2 {
-    font-size: 0.85rem;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    color: var(--muted);
+
+  /* ============ Header / Nav ============ */
+  header.site-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    backdrop-filter: saturate(180%) blur(14px);
+    -webkit-backdrop-filter: saturate(180%) blur(14px);
+    background: color-mix(in srgb, var(--bg) 78%, transparent);
     border-bottom: 1px solid var(--line);
-    padding-bottom: 0.4rem;
-    margin: 2.5rem 0 1rem;
   }
-  p { margin: 0 0 1rem; }
-  a { color: var(--accent); text-decoration: none; border-bottom: 1px solid transparent; }
-  a:hover { border-bottom-color: var(--accent); }
-  ul { padding-left: 1.1rem; margin: 0 0 1rem; }
-  li { margin-bottom: 0.5rem; }
-  .ventures { display: grid; gap: 1.2rem; }
-  .venture-card {
+  .nav-inner {
+    max-width: var(--max);
+    margin: 0 auto;
+    padding: 0.9rem 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.08rem;
+    letter-spacing: -0.01em;
+  }
+  .brand-mark {
+    width: 30px; height: 30px;
+    border-radius: 9px;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex; align-items: center; justify-content: center;
+    color: #fff; font-weight: 800; font-size: 0.85rem;
+    font-family: var(--font-body);
+    box-shadow: var(--shadow);
+    flex-shrink: 0;
+  }
+  nav.primary-nav {
+    display: flex;
+    align-items: center;
+    gap: 1.6rem;
+  }
+  nav.primary-nav a {
+    font-size: 0.92rem;
+    font-weight: 500;
+    color: var(--muted);
+    position: relative;
+    padding: 0.3rem 0.1rem;
+    transition: color 0.2s ease;
+  }
+  nav.primary-nav a::after {
+    content: '';
+    position: absolute;
+    left: 0; right: 100%;
+    bottom: -2px;
+    height: 2px;
+    background: var(--accent);
+    transition: right 0.25s ease;
+    border-radius: 2px;
+  }
+  nav.primary-nav a:hover,
+  nav.primary-nav a.active {
+    color: var(--text);
+  }
+  nav.primary-nav a.active::after,
+  nav.primary-nav a:hover::after {
+    right: 0;
+  }
+  .nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+  }
+  .icon-btn {
+    width: 38px; height: 38px;
+    display: flex; align-items: center; justify-content: center;
+    border-radius: 10px;
     border: 1px solid var(--line);
-    border-radius: 8px;
-    padding: 1rem 1.2rem;
+    background: var(--surface);
+    color: var(--text);
+    cursor: pointer;
+    transition: transform 0.15s ease, border-color 0.2s ease, background 0.2s ease;
   }
-  .venture-card h3 { margin: 0 0 0.3rem; font-size: 1.05rem; }
-  .venture-card .links { font-size: 0.9rem; color: var(--muted); }
-  .venture-card .links a { margin-right: 0.6rem; }
-  .links-row {
+  .icon-btn:hover { transform: translateY(-2px); border-color: var(--accent); }
+  .icon-btn svg { width: 18px; height: 18px; }
+  .theme-toggle .icon-moon { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-sun { display: none; }
+  :root[data-theme="dark"] .theme-toggle .icon-moon { display: block; }
+
+  .menu-toggle { display: none; }
+
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.7rem 1.15rem;
+    border-radius: 999px;
+    font-weight: 600;
+    font-size: 0.92rem;
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: transform 0.15s ease, box-shadow 0.2s ease, background 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+    white-space: nowrap;
+  }
+  .btn:hover { transform: translateY(-2px); }
+  .btn-primary {
+    background: var(--accent);
+    color: var(--bg);
+    box-shadow: var(--shadow);
+  }
+  .btn-primary:hover { box-shadow: var(--shadow-lg); }
+  .btn-ghost {
+    background: transparent;
+    border-color: var(--line);
+    color: var(--text);
+  }
+  .btn-ghost:hover { border-color: var(--accent); color: var(--accent); }
+
+  /* ============ Hero ============ */
+  .hero {
+    position: relative;
+    overflow: hidden;
+    padding: 5.5rem 0 4.5rem;
+  }
+  .hero-glow {
+    position: absolute;
+    inset: -20% -10% auto -10%;
+    height: 620px;
+    z-index: -1;
+    background:
+      radial-gradient(45% 55% at 18% 15%, color-mix(in srgb, var(--accent) 24%, transparent), transparent 70%),
+      radial-gradient(40% 50% at 85% 10%, color-mix(in srgb, var(--accent-2) 20%, transparent), transparent 70%);
+    filter: blur(10px);
+    animation: drift 18s ease-in-out infinite alternate;
+  }
+  @keyframes drift {
+    0% { transform: translate3d(0,0,0) scale(1); }
+    100% { transform: translate3d(2%, 3%, 0) scale(1.05); }
+  }
+  .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border: 1px solid color-mix(in srgb, var(--accent) 30%, transparent);
+    padding: 0.4rem 0.85rem;
+    border-radius: 999px;
+    margin-bottom: 1.4rem;
+  }
+  .eyebrow .dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 3px var(--accent-soft);
+    animation: pulse 2.2s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+  h1.hero-name {
+    font-family: var(--font-display);
+    font-size: clamp(2.6rem, 6vw, 4.2rem);
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+  h1.hero-name .accent-word {
+    background: linear-gradient(100deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  p.hero-tagline {
+    font-size: clamp(1.05rem, 2vw, 1.3rem);
+    color: var(--muted);
+    max-width: 620px;
+    margin: 0 0 2.2rem;
+  }
+  .hero-actions {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.4rem 1rem;
-    font-size: 0.95rem;
+    gap: 0.85rem;
+    margin-bottom: 2.6rem;
   }
-  footer {
-    margin-top: 3rem;
-    padding-top: 1.5rem;
-    border-top: 1px solid var(--line);
+  .hero-socials {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+  }
+  .social-pill {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 42px; height: 42px;
+    border-radius: 12px;
+    border: 1px solid var(--line);
+    background: var(--surface);
+    transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
+  }
+  .social-pill svg { width: 19px; height: 19px; }
+  .social-pill:hover {
+    transform: translateY(-3px) scale(1.04);
+    border-color: var(--accent);
+    color: var(--accent);
+    box-shadow: var(--shadow);
+  }
+
+  /* ============ Stats strip ============ */
+  .stats {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--line);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    overflow: hidden;
+    margin-top: 1rem;
+  }
+  .stat {
+    background: var(--surface);
+    padding: 1.4rem 1rem;
+    text-align: center;
+  }
+  .stat b {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.8rem;
+    color: var(--text);
+    font-weight: 600;
+  }
+  .stat span {
+    font-size: 0.8rem;
+    color: var(--muted-2);
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  /* ============ Sections ============ */
+  section { padding: 5rem 0; scroll-margin-top: 5.5rem; }
+  section.alt-bg { background: var(--bg-alt); }
+  .section-head { margin-bottom: 2.6rem; max-width: 640px; }
+  .kicker {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.7rem;
+  }
+  .kicker svg { width: 16px; height: 16px; }
+  h2.section-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 3.4vw, 2.3rem);
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    margin: 0 0 0.6rem;
+  }
+  .section-sub { color: var(--muted); font-size: 1.02rem; margin: 0; }
+
+  /* ============ Reveal on scroll ============ */
+  .reveal {
+    opacity: 0;
+    transform: translateY(18px);
+    transition: opacity 0.6s cubic-bezier(.2,.7,.2,1), transform 0.6s cubic-bezier(.2,.7,.2,1);
+  }
+  .reveal.in-view { opacity: 1; transform: translateY(0); }
+  .reveal-stagger.in-view > * { animation: none; }
+
+  /* ============ About ============ */
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.25fr;
+    gap: 3rem;
+    align-items: start;
+  }
+  .avatar-ring {
+    position: relative;
+    width: 100%;
+    max-width: 260px;
+    aspect-ratio: 1;
+    border-radius: 28px;
+    background: linear-gradient(150deg, var(--accent), var(--accent-2));
+    padding: 5px;
+    box-shadow: var(--shadow-lg);
+  }
+  .avatar-inner {
+    width: 100%; height: 100%;
+    border-radius: 24px;
+    background: var(--surface);
+    display: flex; align-items: center; justify-content: center;
+    font-family: var(--font-display);
+    font-size: 4.4rem;
+    font-weight: 600;
+    color: var(--accent);
+  }
+  .badge-float {
+    position: absolute;
+    bottom: -14px; right: -14px;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    box-shadow: var(--shadow-lg);
+    border-radius: 14px;
+    padding: 0.55rem 0.8rem;
+    display: flex; align-items: center; gap: 0.45rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+  }
+  .badge-float svg { width: 16px; height: 16px; color: var(--accent); }
+
+  .quick-facts {
+    list-style: none;
+    margin: 1.6rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.75rem;
+  }
+  .quick-facts li {
+    display: flex;
+    gap: 0.7rem;
+    align-items: flex-start;
+    font-size: 0.93rem;
     color: var(--muted);
+  }
+  .quick-facts svg {
+    width: 18px; height: 18px;
+    color: var(--accent);
+    flex-shrink: 0;
+    margin-top: 0.15rem;
+  }
+  .quick-facts b { color: var(--text); font-weight: 600; }
+
+  .chip-row {
+    display: flex; flex-wrap: wrap; gap: 0.55rem;
+    margin-top: 1.8rem;
+  }
+  .chip {
+    font-size: 0.82rem;
+    font-weight: 600;
+    padding: 0.42rem 0.85rem;
+    border-radius: 999px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    border: 1px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  /* ============ Timeline ============ */
+  .timeline {
+    position: relative;
+    margin-top: 1rem;
+    padding-left: 2rem;
+    border-left: 2px solid var(--line);
+  }
+  .tl-item {
+    position: relative;
+    padding-bottom: 2.1rem;
+  }
+  .tl-item:last-child { padding-bottom: 0; }
+  .tl-item::before {
+    content: '';
+    position: absolute;
+    left: -2.42rem;
+    top: 0.25rem;
+    width: 12px; height: 12px;
+    border-radius: 50%;
+    background: var(--accent);
+    box-shadow: 0 0 0 4px var(--accent-soft);
+  }
+  .tl-year {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.3rem;
+  }
+  .tl-title { font-weight: 600; font-size: 1.02rem; margin-bottom: 0.25rem; }
+  .tl-desc { color: var(--muted); font-size: 0.92rem; margin: 0; }
+
+  /* ============ Ventures ============ */
+  .venture-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.4rem;
+  }
+  .venture-card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.9rem;
+    transition: transform 0.25s cubic-bezier(.2,.8,.3,1), box-shadow 0.25s ease, border-color 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .venture-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(160deg, var(--accent-soft), transparent 55%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .venture-card:hover {
+    transform: translateY(-6px);
+    box-shadow: var(--shadow-lg);
+    border-color: color-mix(in srgb, var(--accent) 35%, var(--line));
+  }
+  .venture-card:hover::before { opacity: 1; }
+  .venture-icon {
+    width: 48px; height: 48px;
+    border-radius: 13px;
+    display: flex; align-items: center; justify-content: center;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff;
+    box-shadow: var(--shadow);
+    z-index: 1;
+  }
+  .venture-icon svg { width: 24px; height: 24px; }
+  .venture-card h3 {
+    font-family: var(--font-display);
+    font-size: 1.22rem;
+    margin: 0;
+    font-weight: 600;
+    z-index: 1;
+  }
+  .venture-card p { color: var(--muted); font-size: 0.93rem; margin: 0; flex-grow: 1; z-index: 1; }
+  .venture-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; z-index: 1; }
+  .tag {
+    font-size: 0.72rem;
+    font-weight: 600;
+    padding: 0.25rem 0.6rem;
+    border-radius: 999px;
+    background: var(--bg-alt);
+    color: var(--muted-2);
+    border: 1px solid var(--line);
+  }
+  .venture-links {
+    display: flex;
+    gap: 0.8rem;
+    margin-top: 0.3rem;
+    z-index: 1;
+  }
+  .venture-links a {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
     font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--accent);
+    transition: gap 0.2s ease;
+  }
+  .venture-links a svg { width: 14px; height: 14px; }
+  .venture-links a:hover { gap: 0.55rem; }
+
+  /* ============ Research / Writing ============ */
+  .research-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+  }
+  .research-card {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius-sm);
+    padding: 1.15rem 1.3rem;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+  }
+  .research-card:hover {
+    transform: translateX(4px);
+    border-color: color-mix(in srgb, var(--accent) 30%, var(--line));
+    box-shadow: var(--shadow);
+  }
+  .research-icon {
+    width: 40px; height: 40px;
+    border-radius: 10px;
+    background: var(--accent-soft);
+    color: var(--accent);
+    display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0;
+  }
+  .research-icon svg { width: 20px; height: 20px; }
+  .research-card h3 { margin: 0 0 0.2rem; font-size: 0.98rem; font-weight: 600; }
+  .research-card p { margin: 0; color: var(--muted); font-size: 0.85rem; }
+  .research-card .ext { margin-left: auto; color: var(--muted-2); flex-shrink: 0; align-self: center; }
+  .research-card .ext svg { width: 16px; height: 16px; }
+  .research-card.full { grid-column: 1 / -1; }
+
+  /* ============ Connect ============ */
+  .connect-panel {
+    background: linear-gradient(135deg, var(--accent), color-mix(in srgb, var(--accent) 60%, var(--accent-2)));
+    border-radius: 24px;
+    padding: 3rem 2.5rem;
+    color: #fff;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .connect-panel::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background-image: radial-gradient(circle at 1px 1px, rgba(255,255,255,0.16) 1px, transparent 0);
+    background-size: 22px 22px;
+    opacity: 0.5;
+  }
+  .connect-panel > * { position: relative; z-index: 1; }
+  .connect-panel h2 {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 3.2vw, 2.1rem);
+    margin: 0 0 0.7rem;
+    font-weight: 600;
+  }
+  .connect-panel p { color: rgba(255,255,255,0.86); max-width: 480px; margin: 0 auto 2rem; }
+  .connect-panel .btn-primary {
+    background: #fff;
+    color: var(--accent);
+  }
+  .connect-socials {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 2rem;
+  }
+  .connect-socials .social-pill {
+    background: rgba(255,255,255,0.12);
+    border-color: rgba(255,255,255,0.25);
+    color: #fff;
+  }
+  .connect-socials .social-pill:hover {
+    background: #fff;
+    color: var(--accent);
+    border-color: #fff;
+  }
+
+  /* ============ Footer ============ */
+  footer.site-footer {
+    border-top: 1px solid var(--line);
+    padding: 2.2rem 0;
+  }
+  .footer-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 0.85rem;
+    color: var(--muted-2);
+  }
+  .footer-inner a { color: var(--muted); font-weight: 500; }
+  .footer-inner a:hover { color: var(--accent); }
+
+  /* ============ Back to top ============ */
+  .back-to-top {
+    position: fixed;
+    right: 1.4rem;
+    bottom: 1.4rem;
+    width: 46px; height: 46px;
+    border-radius: 50%;
+    background: var(--accent);
+    color: var(--bg);
+    display: flex; align-items: center; justify-content: center;
+    box-shadow: var(--shadow-lg);
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    pointer-events: none;
+    transform: translateY(10px);
+    transition: opacity 0.25s ease, transform 0.25s ease;
+    z-index: 150;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; transform: translateY(0); }
+  .back-to-top svg { width: 20px; height: 20px; }
+
+  /* ============ Mobile ============ */
+  @media (max-width: 860px) {
+    .about-grid { grid-template-columns: 1fr; }
+    .venture-grid { grid-template-columns: 1fr; }
+    .research-grid { grid-template-columns: 1fr; }
+    .stats { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 700px) {
+    nav.primary-nav {
+      position: fixed;
+      top: 64px; left: 0; right: 0;
+      background: var(--surface);
+      border-bottom: 1px solid var(--line);
+      flex-direction: column;
+      align-items: flex-start;
+      padding: 1rem 1.5rem 1.4rem;
+      gap: 0.9rem;
+      transform: translateY(-130%);
+      opacity: 0;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      box-shadow: var(--shadow-lg);
+    }
+    nav.primary-nav.open { transform: translateY(0); opacity: 1; }
+    .menu-toggle { display: flex; }
+    .hero { padding: 3.6rem 0 3rem; }
+    .connect-panel { padding: 2.2rem 1.4rem; }
   }
 </style>
 </head>
 <body>
-<div class="wrap">
 
-  <h1>Ayomide Agbaje</h1>
-  <p class="tagline">Founder of Clisense and HealthDrive. Building climate and health infrastructure for underserved communities in Africa. Based in Kigali, Rwanda.</p>
+<a href="#main" class="skip-link">Skip to content</a>
+<div class="progress-bar" id="progressBar"></div>
 
-  <h2>About</h2>
-  <p>
-    I'm a Nigerian founder and builder based in Kigali. I hold a BSc in Software Engineering
-    (First Class Honours) from African Leadership University and a BSc in Life Sciences
-    (Cum Laude) from the University of Ilorin. I lead the data science and machine learning
-    work behind a rural health platform running on USSD over 2G telephony, and I co-founded
-    Clisense, a climate-smart agriculture venture built around the Water-Energy-Food nexus.
-  </p>
-  <p>
-    My research work spans low-resource speech processing, health informatics, and
-    implementation science. I published a peer-reviewed paper in the
-    <a href="https://doi.org/10.38124/ijisrt/26apr2523" target="_blank" rel="noopener">International Journal of Innovative Science and Research Technology</a>,
-    and I completed the Carnegie Mellon University Africa Bridge Program, a selective
-    preparatory track for graduate study in engineering and technology.
-  </p>
+<!-- ============ Icon sprite (referenced via <use>) ============ -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <symbol id="i-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41"/></symbol>
+    <symbol id="i-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></symbol>
+    <symbol id="i-menu" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12h18M3 6h18M3 18h18"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 6 6 18M6 6l12 12"/></symbol>
+    <symbol id="i-arrow-right" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></symbol>
+    <symbol id="i-arrow-down" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 5v14M6 13l6 6 6-6"/></symbol>
+    <symbol id="i-external" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6M15 3h6v6M10 14 21 3"/></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m22 6-10 7L2 6"/></symbol>
+    <symbol id="i-map-pin" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/></symbol>
+    <symbol id="i-cap" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 5 2 10l10 5 10-5Z"/><path d="M6 12v5c0 1.1 2.7 2 6 2s6-.9 6-2v-5"/></symbol>
+    <symbol id="i-leaf" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M11 20A7 7 0 0 1 4 13c0-6 7-11 15-11 0 8-5 15-11 15 0 1 0 2 1 3"/><path d="M4 13c3 0 5.7-1 8-3"/></symbol>
+    <symbol id="i-heart-pulse" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.29 1.51 4.04 3 5.5l7 7Z"/><path d="M3.5 9h2.5l1.5 3 2-6 1.5 3H15"/></symbol>
+    <symbol id="i-flask" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 2v6.29a2 2 0 0 1-.31 1.07L3.6 17.4A2 2 0 0 0 5.3 21h13.4a2 2 0 0 0 1.7-3.6l-5.09-8.04A2 2 0 0 1 15 8.29V2"/><path d="M6.5 2h11M6 15h12"/></symbol>
+    <symbol id="i-book" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2Z"/></symbol>
+    <symbol id="i-scholar" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10 12 4 2 10l10 6 10-6Z"/><path d="M6 12.5V18c0 1.1 2.7 2 6 2s6-.9 6-2v-5.5"/></symbol>
+    <symbol id="i-archive" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="20" height="5" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8M10 12h4"/></symbol>
+    <symbol id="i-newspaper" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h13a3 3 0 0 1 3 3v13H7a3 3 0 0 1-3-3Z"/><path d="M18 20a2 2 0 0 0 2-2V9a2 2 0 0 0-2-2M8 8h7M8 12h7M8 16h4"/></symbol>
+    <symbol id="i-pen" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4Z"/></symbol>
+    <symbol id="i-linkedin" viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.03-1.85-3.03-1.85 0-2.14 1.45-2.14 2.94v5.66H9.36V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45ZM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12ZM7.12 20.45H3.56V9h3.56Z"/></symbol>
+    <symbol id="i-github" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2A10 10 0 0 0 2 12c0 4.42 2.87 8.17 6.84 9.5.5.09.68-.22.68-.48v-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.98 1.03-2.68-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.02a9.4 9.4 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.65.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85v2.74c0 .27.18.58.69.48A10 10 0 0 0 22 12 10 10 0 0 0 12 2Z"/></symbol>
+    <symbol id="i-x" viewBox="0 0 24 24" fill="currentColor"><path d="M18.9 2h3.3l-7.2 8.2L23.5 22h-6.6l-5.2-6.8L5.7 22H2.4l7.7-8.8L1.5 2h6.8l4.7 6.2Zm-1.2 18h1.8L7.4 3.9H5.5Z"/></symbol>
+    <symbol id="i-instagram" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"/></symbol>
+    <symbol id="i-youtube" viewBox="0 0 24 24" fill="currentColor"><path d="M22.5 6.4a2.8 2.8 0 0 0-2-2C18.7 4 12 4 12 4s-6.7 0-8.5.4a2.8 2.8 0 0 0-2 2A29.9 29.9 0 0 0 1 12a29.9 29.9 0 0 0 .5 5.6 2.8 2.8 0 0 0 2 2C5.3 20 12 20 12 20s6.7 0 8.5-.4a2.8 2.8 0 0 0 2-2A29.9 29.9 0 0 0 23 12a29.9 29.9 0 0 0-.5-5.6ZM10 15.5v-7l6 3.5Z"/></symbol>
+    <symbol id="i-telegram" viewBox="0 0 24 24" fill="currentColor"><path d="M21.9 4.3 2.7 11.7c-1.3.5-1.3 1.2-.2 1.5l4.9 1.5 1.9 5.8c.2.6.4.8.8.8.4 0 .6-.2.9-.5l2.2-2.1 4.6 3.4c.8.5 1.4.2 1.6-.8L23.9 5.6c.3-1.3-.4-1.9-2-1.3Zm-3.5 3.5-9 5.6-.4 3.9-.9-3.9 8.8-6.4c.4-.3.8-.1.5.3Z"/></symbol>
+    <symbol id="i-globe" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10Z"/></symbol>
+    <symbol id="i-check" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></symbol>
+  </defs>
+</svg>
 
-  <h2>Ventures</h2>
-  <div class="ventures">
-    <div class="venture-card">
-      <h3>Clisense</h3>
-      <p>A climate-smart agriculture venture centered on flood prediction and Water-Energy-Food nexus data for smallholder farmers.</p>
-      <div class="links">
-        <a href="https://clisense.lovable.app/" target="_blank" rel="noopener">Web app</a>
-        <a href="https://www.linkedin.com/company/clisense/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-    <div class="venture-card">
-      <h3>HealthDrive</h3>
-      <p>A rural health access platform delivering USSD-based telehealth over 2G telephony, built for community health workers and patients with limited connectivity.</p>
-      <div class="links">
-        <a href="https://healthdrive.lovable.app/" target="_blank" rel="noopener">Web app</a>
-        <a href="https://www.linkedin.com/company/healthdrive/" target="_blank" rel="noopener">LinkedIn</a>
-      </div>
-    </div>
-    <div class="venture-card">
-      <h3>Afresearch Ventures</h3>
-      <p>Research and venture-capital-adjacent work focused on Africa's innovation ecosystem.</p>
-      <div class="links">
-        <a href="https://afresearch.vc/" target="_blank" rel="noopener">Website</a>
-        <a href="https://www.linkedin.com/company/afresearch-ventures/" target="_blank" rel="noopener">LinkedIn</a>
-        <a href="https://x.com/Afresearch_VC" target="_blank" rel="noopener">X</a>
-      </div>
+<header class="site-header">
+  <div class="nav-inner">
+    <a href="#main" class="brand" aria-label="Ayomide Agbaje — home">
+      <span class="brand-mark">AA</span>
+      Ayomide Agbaje
+    </a>
+    <nav class="primary-nav" id="primaryNav" aria-label="Primary">
+      <a href="#about" data-nav>About</a>
+      <a href="#ventures" data-nav>Ventures</a>
+      <a href="#research" data-nav>Research</a>
+      <a href="#connect" data-nav>Connect</a>
+    </nav>
+    <div class="nav-actions">
+      <button class="icon-btn theme-toggle" id="themeToggle" aria-label="Toggle dark mode" aria-pressed="false">
+        <svg class="icon-sun"><use href="#i-sun"/></svg>
+        <svg class="icon-moon"><use href="#i-moon"/></svg>
+      </button>
+      <button class="icon-btn menu-toggle" id="menuToggle" aria-label="Toggle navigation menu" aria-expanded="false" aria-controls="primaryNav">
+        <svg id="menuIconOpen"><use href="#i-menu"/></svg>
+      </button>
     </div>
   </div>
+</header>
 
-  <h2>Writing &amp; Research</h2>
-  <ul>
-    <li><a href="https://doi.org/10.38124/ijisrt/26apr2523" target="_blank" rel="noopener">Peer-reviewed paper — International Journal of Innovative Science and Research Technology (April 2026)</a></li>
-    <li><a href="https://scholar.google.com/citations?user=5fwtNo8AAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar profile</a></li>
-    <li><a href="https://alueducation.academia.edu/AyomideAgbaje" target="_blank" rel="noopener">Academia.edu</a></li>
-    <li><a href="https://muckrack.com/ayomide-agbaje/portfolio" target="_blank" rel="noopener">Media portfolio — bylines and published work</a></li>
-    <li><a href="https://medium.com/@agbajecity" target="_blank" rel="noopener">Medium</a></li>
-  </ul>
+<main id="main">
 
-  <h2>Elsewhere</h2>
-  <div class="links-row">
-    <a href="https://www.linkedin.com/in/agbajeayomide/" target="_blank" rel="noopener">LinkedIn</a>
-    <a href="https://github.com/AgbajeCity" target="_blank" rel="noopener">GitHub</a>
-    <a href="https://x.com/AgbajeCity" target="_blank" rel="noopener">X</a>
-    <a href="https://www.instagram.com/agbajecity/" target="_blank" rel="noopener">Instagram</a>
-    <a href="https://www.youtube.com/@ayomideagbaje9404" target="_blank" rel="noopener">YouTube</a>
-    <a href="https://t.me/AgbajeCity" target="_blank" rel="noopener">Telegram</a>
-    <a href="mailto:h.agbaje@alustudent.com">Email</a>
+  <!-- ============ Hero ============ -->
+  <section class="hero">
+    <div class="hero-glow" aria-hidden="true"></div>
+    <div class="wrap">
+      <span class="eyebrow"><span class="dot"></span> Available for research collaborations &amp; partnerships</span>
+      <h1 class="hero-name">Building climate &amp; health<br class="hero-br"> infrastructure for <span class="accent-word">Africa.</span></h1>
+      <p class="hero-tagline">I'm Ayomide — a Nigerian founder and researcher based in Kigali, Rwanda. I co-founded Clisense and HealthDrive, and I work on low-resource speech processing, health informatics, and implementation science.</p>
+      <div class="hero-actions">
+        <a href="#ventures" class="btn btn-primary">See my work <svg width="16" height="16"><use href="#i-arrow-right"/></svg></a>
+        <a href="mailto:h.agbaje@alustudent.com" class="btn btn-ghost">Get in touch <svg width="16" height="16"><use href="#i-mail"/></svg></a>
+      </div>
+      <div class="hero-socials" aria-label="Social links">
+        <a class="social-pill" href="https://www.linkedin.com/in/agbajeayomide/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+        <a class="social-pill" href="https://github.com/AgbajeCity" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+        <a class="social-pill" href="https://x.com/AgbajeCity" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg><use href="#i-x"/></svg></a>
+        <a class="social-pill" href="https://www.instagram.com/agbajecity/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+        <a class="social-pill" href="https://www.youtube.com/@ayomideagbaje9404" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube"/></svg></a>
+        <a class="social-pill" href="https://t.me/AgbajeCity" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-telegram"/></svg></a>
+      </div>
+
+      <div class="stats reveal" data-reveal>
+        <div class="stat"><b>3</b><span>Ventures &amp; projects</span></div>
+        <div class="stat"><b>1</b><span>Peer-reviewed paper</span></div>
+        <div class="stat"><b>2</b><span>Degrees earned</span></div>
+        <div class="stat"><b>🇷🇼</b><span>Based in Kigali</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ About ============ -->
+  <section id="about">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker"><svg><use href="#i-cap"/></svg> About</span>
+        <h2 class="section-title">Founder, researcher, and builder.</h2>
+        <p class="section-sub">A little about the path, the training, and what I'm focused on today.</p>
+      </div>
+
+      <div class="about-grid">
+        <div class="reveal" data-reveal>
+          <div class="avatar-ring">
+            <div class="avatar-inner">AA</div>
+            <div class="badge-float"><svg><use href="#i-map-pin"/></svg> Kigali, Rwanda</div>
+          </div>
+        </div>
+
+        <div class="reveal" data-reveal>
+          <p>
+            I'm a Nigerian founder and builder based in Kigali. I hold a BSc in Software Engineering
+            (First Class Honours) from African Leadership University and a BSc in Life Sciences
+            (Cum Laude) from the University of Ilorin. I lead the data science and machine learning
+            work behind a rural health platform running on USSD over 2G telephony, and I co-founded
+            Clisense, a climate-smart agriculture venture built around the Water-Energy-Food nexus.
+          </p>
+          <p>
+            My research work spans low-resource speech processing, health informatics, and
+            implementation science. I published a peer-reviewed paper in the
+            <a href="https://doi.org/10.38124/ijisrt/26apr2523" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;border-bottom:1px solid currentColor;">International Journal of Innovative Science and Research Technology</a>,
+            and I completed the Carnegie Mellon University Africa Bridge Program, a selective
+            preparatory track for graduate study in engineering and technology.
+          </p>
+
+          <ul class="quick-facts">
+            <li><svg><use href="#i-map-pin"/></svg><span><b>Based in</b> Kigali, Rwanda — originally from Nigeria</span></li>
+            <li><svg><use href="#i-cap"/></svg><span><b>Software Engineering, First Class</b> — African Leadership University</span></li>
+            <li><svg><use href="#i-flask"/></svg><span><b>Life Sciences, Cum Laude</b> — University of Ilorin</span></li>
+            <li><svg><use href="#i-book"/></svg><span><b>CMU Africa Bridge Program</b> — graduate preparatory track</span></li>
+          </ul>
+
+          <div class="chip-row">
+            <span class="chip">Machine Learning</span>
+            <span class="chip">Health Informatics</span>
+            <span class="chip">Climate Tech</span>
+            <span class="chip">Speech Processing</span>
+            <span class="chip">Implementation Science</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Timeline -->
+      <div class="timeline reveal" data-reveal style="margin-top:3.5rem;">
+        <div class="tl-item">
+          <div class="tl-year">2021</div>
+          <div class="tl-title">BSc Life Sciences, Cum Laude — University of Ilorin</div>
+          <p class="tl-desc">Foundational training in biological sciences that now underpins the health-informatics side of my work.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">BSc Software Engineering, First Class Honours — African Leadership University</div>
+          <p class="tl-desc">Focused on data science and machine learning, applied throughout to Clisense and HealthDrive.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">2026</div>
+          <div class="tl-title">Peer-reviewed publication — IJISRT</div>
+          <p class="tl-desc">Published research spanning low-resource speech processing and implementation science.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Ventures ============ -->
+  <section id="ventures" class="alt-bg">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker"><svg><use href="#i-leaf"/></svg> Ventures</span>
+        <h2 class="section-title">What I'm building.</h2>
+        <p class="section-sub">Three efforts, each aimed at making climate and health infrastructure work for people who are usually left out of it.</p>
+      </div>
+
+      <div class="venture-grid">
+        <article class="venture-card reveal" data-reveal>
+          <div class="venture-icon"><svg><use href="#i-leaf"/></svg></div>
+          <h3>Clisense</h3>
+          <p>A climate-smart agriculture venture centered on flood prediction and Water-Energy-Food nexus data for smallholder farmers.</p>
+          <div class="venture-tags">
+            <span class="tag">Climate</span>
+            <span class="tag">Agriculture</span>
+            <span class="tag">Data</span>
+          </div>
+          <div class="venture-links">
+            <a href="https://clisense.lovable.app/" target="_blank" rel="noopener">Web app <svg><use href="#i-external"/></svg></a>
+            <a href="https://www.linkedin.com/company/clisense/" target="_blank" rel="noopener">LinkedIn <svg><use href="#i-external"/></svg></a>
+          </div>
+        </article>
+
+        <article class="venture-card reveal" data-reveal>
+          <div class="venture-icon"><svg><use href="#i-heart-pulse"/></svg></div>
+          <h3>HealthDrive</h3>
+          <p>A rural health access platform delivering USSD-based telehealth over 2G telephony, built for community health workers and patients with limited connectivity.</p>
+          <div class="venture-tags">
+            <span class="tag">Health</span>
+            <span class="tag">USSD</span>
+            <span class="tag">Rural access</span>
+          </div>
+          <div class="venture-links">
+            <a href="https://healthdrive.lovable.app/" target="_blank" rel="noopener">Web app <svg><use href="#i-external"/></svg></a>
+            <a href="https://www.linkedin.com/company/healthdrive/" target="_blank" rel="noopener">LinkedIn <svg><use href="#i-external"/></svg></a>
+          </div>
+        </article>
+
+        <article class="venture-card reveal" data-reveal>
+          <div class="venture-icon"><svg><use href="#i-flask"/></svg></div>
+          <h3>Afresearch Ventures</h3>
+          <p>Research and venture-capital-adjacent work focused on Africa's innovation ecosystem.</p>
+          <div class="venture-tags">
+            <span class="tag">Research</span>
+            <span class="tag">Venture</span>
+          </div>
+          <div class="venture-links">
+            <a href="https://afresearch.vc/" target="_blank" rel="noopener">Website <svg><use href="#i-external"/></svg></a>
+            <a href="https://www.linkedin.com/company/afresearch-ventures/" target="_blank" rel="noopener">LinkedIn <svg><use href="#i-external"/></svg></a>
+            <a href="https://x.com/Afresearch_VC" target="_blank" rel="noopener">X <svg><use href="#i-external"/></svg></a>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Research & Writing ============ -->
+  <section id="research">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker"><svg><use href="#i-book"/></svg> Research &amp; Writing</span>
+        <h2 class="section-title">Published work.</h2>
+        <p class="section-sub">Peer-reviewed research, working papers, and writing — indexed across the usual academic and media platforms.</p>
+      </div>
+
+      <div class="research-grid">
+        <a class="research-card full reveal" data-reveal href="https://doi.org/10.38124/ijisrt/26apr2523" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-flask"/></svg></div>
+          <div>
+            <h3>Peer-reviewed paper — IJISRT (April 2026)</h3>
+            <p>International Journal of Innovative Science and Research Technology.</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+        <a class="research-card reveal" data-reveal href="https://scholar.google.com/citations?user=5fwtNo8AAAAJ&hl=en" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-scholar"/></svg></div>
+          <div>
+            <h3>Google Scholar</h3>
+            <p>Publication record &amp; citations</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+        <a class="research-card reveal" data-reveal href="https://alueducation.academia.edu/AyomideAgbaje" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-archive"/></svg></div>
+          <div>
+            <h3>Academia.edu</h3>
+            <p>Papers &amp; working drafts</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+        <a class="research-card reveal" data-reveal href="https://muckrack.com/ayomide-agbaje/portfolio" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-newspaper"/></svg></div>
+          <div>
+            <h3>Media portfolio</h3>
+            <p>Bylines &amp; published work</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+        <a class="research-card reveal" data-reveal href="https://medium.com/@agbajecity" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-pen"/></svg></div>
+          <div>
+            <h3>Medium</h3>
+            <p>Essays &amp; notes</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Connect ============ -->
+  <section id="connect" class="alt-bg">
+    <div class="wrap">
+      <div class="connect-panel reveal" data-reveal>
+        <h2>Let's build something.</h2>
+        <p>Open to research collaborations, partnerships across climate and health, and conversations with people working on similar problems.</p>
+        <a href="mailto:h.agbaje@alustudent.com" class="btn btn-primary">
+          <svg width="16" height="16"><use href="#i-mail"/></svg> h.agbaje@alustudent.com
+        </a>
+        <div class="connect-socials" aria-label="Social links">
+          <a class="social-pill" href="https://www.linkedin.com/in/agbajeayomide/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
+          <a class="social-pill" href="https://github.com/AgbajeCity" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
+          <a class="social-pill" href="https://x.com/AgbajeCity" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg><use href="#i-x"/></svg></a>
+          <a class="social-pill" href="https://www.instagram.com/agbajecity/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
+          <a class="social-pill" href="https://www.youtube.com/@ayomideagbaje9404" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube"/></svg></a>
+          <a class="social-pill" href="https://t.me/AgbajeCity" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-telegram"/></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-inner">
+    <span>&copy; 2026 Ayomide Agbaje. Built with GitHub Pages.</span>
+    <span>
+      <a href="#main">Back to top</a>
+    </span>
   </div>
+</footer>
 
-  <footer>
-    &copy; 2026 Ayomide Agbaje. Built with GitHub Pages.
-  </footer>
+<button class="back-to-top" id="backToTop" aria-label="Back to top">
+  <svg><use href="#i-arrow-right" style="transform:rotate(-90deg)"/></svg>
+</button>
 
-</div>
+<script>
+(function () {
+  "use strict";
+
+  /* ---------- Theme toggle ---------- */
+  var root = document.documentElement;
+  var themeToggle = document.getElementById('themeToggle');
+  var stored = null;
+  try { stored = localStorage.getItem('theme'); } catch (e) {}
+  if (stored === 'light' || stored === 'dark') {
+    root.setAttribute('data-theme', stored);
+    themeToggle.setAttribute('aria-pressed', stored === 'dark' ? 'true' : 'false');
+  }
+  themeToggle.addEventListener('click', function () {
+    var current = root.getAttribute('data-theme');
+    var prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+    var isDark = current ? current === 'dark' : prefersDark;
+    var next = isDark ? 'light' : 'dark';
+    root.setAttribute('data-theme', next);
+    themeToggle.setAttribute('aria-pressed', next === 'dark' ? 'true' : 'false');
+    try { localStorage.setItem('theme', next); } catch (e) {}
+  });
+
+  /* ---------- Mobile menu ---------- */
+  var menuToggle = document.getElementById('menuToggle');
+  var nav = document.getElementById('primaryNav');
+  menuToggle.addEventListener('click', function () {
+    var open = nav.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+    menuToggle.innerHTML = open
+      ? '<svg><use href="#i-close"/></svg>'
+      : '<svg><use href="#i-menu"/></svg>';
+  });
+  nav.querySelectorAll('a').forEach(function (link) {
+    link.addEventListener('click', function () {
+      nav.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+      menuToggle.innerHTML = '<svg><use href="#i-menu"/></svg>';
+    });
+  });
+
+  /* ---------- Scroll progress bar ---------- */
+  var progressBar = document.getElementById('progressBar');
+  function updateProgress() {
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
+    var height = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+    var pct = height > 0 ? (scrollTop / height) * 100 : 0;
+    progressBar.style.width = pct + '%';
+  }
+
+  /* ---------- Back to top ---------- */
+  var backToTop = document.getElementById('backToTop');
+  function updateBackToTop() {
+    if (window.scrollY > 480) backToTop.classList.add('visible');
+    else backToTop.classList.remove('visible');
+  }
+  backToTop.addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+
+  window.addEventListener('scroll', function () {
+    updateProgress();
+    updateBackToTop();
+  }, { passive: true });
+  updateProgress();
+  updateBackToTop();
+
+  /* ---------- Active nav link on scroll ---------- */
+  var sections = ['about', 'ventures', 'research', 'connect']
+    .map(function (id) { return document.getElementById(id); })
+    .filter(Boolean);
+  var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
+
+  if ('IntersectionObserver' in window && sections.length) {
+    var navObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var id = entry.target.id;
+          navLinks.forEach(function (link) {
+            link.classList.toggle('active', link.getAttribute('href') === '#' + id);
+          });
+        }
+      });
+    }, { rootMargin: '-45% 0px -50% 0px', threshold: 0 });
+    sections.forEach(function (s) { navObserver.observe(s); });
+  }
+
+  /* ---------- Reveal on scroll ---------- */
+  var revealEls = Array.prototype.slice.call(document.querySelectorAll('[data-reveal]'));
+  if ('IntersectionObserver' in window && revealEls.length) {
+    var revealObserver = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('in-view');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.12, rootMargin: '0px 0px -60px 0px' });
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add('in-view'); });
+  }
+})();
+</script>
+
 </body>
 </html>
