@@ -782,6 +782,7 @@
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
       <a href="#about" data-nav>About</a>
       <a href="#research" data-nav>Research</a>
+      <a href="#projects" data-nav>Projects</a>
       <a href="#experience" data-nav>Experience</a>
       <a href="#awards" data-nav>Awards</a>
       <a href="#connect" data-nav>Connect</a>
@@ -840,21 +841,18 @@
 
         <div class="reveal" data-reveal>
           <p>
-            I'm a researcher. I hold a degree in Software Engineering
-            (First Class Honours) from African Leadership University and a degree in Life Sciences
-            (Cum Laude) from the University of Ilorin. My work combines machine learning,
-            health infrastructure, and low-resource language technology. I build and study
-            systems that hold up under real constraints: limited connectivity, scarce
-            training data.
+            I'm a researcher and builder based in Kigali. My work sits at the intersection of
+            machine learning, health infrastructure, and low-resource language technology.
+            I build and study systems that hold up under real constraints: limited
+            connectivity, scarce training data.
           </p>
           <p>
-            My research work spans low-resource speech processing, health informatics, and
-            implementation science. I published a peer-reviewed paper in the
+            I published a peer-reviewed paper in the
             <a href="https://doi.org/10.38124/ijisrt/26apr2523" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;border-bottom:1px solid currentColor;">International Journal of Innovative Science and Research Technology</a>,
-            and I completed the Carnegie Mellon University Africa Bridge Program, a selective
-            preparatory track for graduate study in engineering and technology. In March 2026,
-            I received the Most Entrepreneurial Researcher Award at the 2nd Primary Health Care
-            Congress, hosted by Amref International University in Nairobi.
+            and completed the Carnegie Mellon University Africa Bridge Program, a preparatory
+            track for graduate study in engineering and technology. In March 2026, I received
+            the Most Entrepreneurial Researcher Award at the 2nd Primary Health Care Congress,
+            hosted by Amref International University in Nairobi.
           </p>
 
           <ul class="quick-facts">
@@ -947,6 +945,44 @@
     </div>
   </section>
 
+  <!-- ============ Research Projects ============ -->
+  <section id="projects" class="alt-bg">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker"><svg><use href="#i-github"/></svg> Projects</span>
+        <h2 class="section-title">Applied machine learning.</h2>
+        <p class="section-sub">Code from health, climate, and public-health forecasting work — open on GitHub.</p>
+      </div>
+
+      <div class="research-grid">
+        <a class="research-card full reveal" data-reveal href="https://github.com/AgbajeCity/HealthDrive-Triage-Chatbot" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-heart-pulse"/></svg></div>
+          <div>
+            <h3>HealthDrive Triage Chatbot</h3>
+            <p>Clinical triage chatbot fine-tuned on Llama-3-8B with QLoRA. BLEU rose from 8.71 to 36.55 against the base model, a 319% improvement, after training on 2,000 MedAlpaca flashcards.</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+        <a class="research-card full reveal" data-reveal href="https://github.com/AgbajeCity/dengue-api-render" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-flask"/></svg></div>
+          <div>
+            <h3>Dengue Case Prediction API</h3>
+            <p>FastAPI service predicting 2024 African dengue cases from 2023 WHO data, with a companion Flutter app. A tuned RandomForestRegressor was selected over SGD and decision-tree baselines by R².</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+        <a class="research-card full reveal" data-reveal href="https://github.com/AgbajeCity/Air-Quality-Forecasting" target="_blank" rel="noopener">
+          <div class="research-icon"><svg><use href="#i-leaf"/></svg></div>
+          <div>
+            <h3>Air Quality Forecasting</h3>
+            <p>Bi-directional LSTM forecasting Beijing PM2.5 levels, built on lagged and cyclical time features plus a dew-point-depression interaction term. RMSE fell from a 120.5 baseline RNN to under 48.0.</p>
+          </div>
+          <span class="ext"><svg><use href="#i-external"/></svg></span>
+        </a>
+      </div>
+    </div>
+  </section>
+
   <!-- ============ Experience ============ -->
   <section id="experience" class="alt-bg">
     <div class="wrap">
@@ -1009,17 +1045,17 @@
           </div>
         </div>
         <div class="research-card reveal" data-reveal>
-          <div class="research-icon"><svg><use href="#i-leaf"/></svg></div>
+          <div class="research-icon"><svg><use href="#i-heart-pulse"/></svg></div>
           <div>
-            <h3>IRENA NewGen Renewable Energy Accelerator</h3>
-            <p>Selected cohort member, 2026 — for Clisense, my climate-smart agriculture venture.</p>
+            <h3>ALU Ventures Lab</h3>
+            <p>Selected cohort member, 2026 — for HealthDrive, at the Centre for Entrepreneurship, African Leadership University. A 12-week venture accelerator; this year's cohort spans 42 ventures across 10 sectors, with top ventures eligible for up to $30,000 in non-dilutive funding.</p>
           </div>
         </div>
         <div class="research-card reveal" data-reveal>
           <div class="research-icon"><svg><use href="#i-book"/></svg></div>
           <div>
             <h3>CMU Africa Bridge Program</h3>
-            <p>Completed the selective preparatory track for graduate study in engineering and technology, Carnegie Mellon University Africa.</p>
+            <p>Completed a preparatory track for graduate study in engineering and technology, Carnegie Mellon University Africa.</p>
           </div>
         </div>
         <div class="research-card reveal" data-reveal>
@@ -1143,7 +1179,7 @@
   updateBackToTop();
 
   /* ---------- Active nav link on scroll ---------- */
-  var sections = ['about', 'research', 'experience', 'awards', 'connect']
+  var sections = ['about', 'research', 'projects', 'experience', 'awards', 'connect']
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
