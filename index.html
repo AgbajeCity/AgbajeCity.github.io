@@ -776,6 +776,7 @@
     </a>
     <nav class="primary-nav" id="primaryNav" aria-label="Primary">
       <a href="#about" data-nav>About</a>
+      <a href="#awards" data-nav>Awards</a>
       <a href="#research" data-nav>Research</a>
       <a href="#connect" data-nav>Connect</a>
     </nav>
@@ -846,7 +847,9 @@
             implementation science. I published a peer-reviewed paper in the
             <a href="https://doi.org/10.38124/ijisrt/26apr2523" target="_blank" rel="noopener" style="color:var(--accent);font-weight:600;border-bottom:1px solid currentColor;">International Journal of Innovative Science and Research Technology</a>,
             and I completed the Carnegie Mellon University Africa Bridge Program, a selective
-            preparatory track for graduate study in engineering and technology.
+            preparatory track for graduate study in engineering and technology. In March 2026,
+            I received the Most Entrepreneurial Researcher Award at the 2nd Primary Health Care
+            Congress, hosted by Amref International University in Nairobi.
           </p>
 
           <ul class="quick-facts">
@@ -882,6 +885,53 @@
           <div class="tl-year">2026</div>
           <div class="tl-title">Peer-reviewed publication — IJISRT</div>
           <p class="tl-desc">Published research spanning low-resource speech processing and implementation science.</p>
+        </div>
+        <div class="tl-item">
+          <div class="tl-year">Mar 2026</div>
+          <div class="tl-title">Most Entrepreneurial Researcher — 2nd Primary Health Care Congress</div>
+          <p class="tl-desc">Awarded at Amref International University, Nairobi, for research work under the congress theme "Redesigning Primary Health Care: Building Resilience amid Global Uncertainty."</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ Awards & Recognition ============ -->
+  <section id="awards" class="alt-bg">
+    <div class="wrap">
+      <div class="section-head reveal" data-reveal>
+        <span class="kicker"><svg><use href="#i-scholar"/></svg> Awards &amp; Recognition</span>
+        <h2 class="section-title">Selected honours.</h2>
+        <p class="section-sub">Recognition for research, entrepreneurship, and selective programmes I've been part of.</p>
+      </div>
+
+      <div class="research-grid">
+        <div class="research-card full reveal" data-reveal>
+          <div class="research-icon"><svg><use href="#i-heart-pulse"/></svg></div>
+          <div>
+            <h3>Most Entrepreneurial Researcher Award</h3>
+            <p>2nd Primary Health Care Congress, Amref International University, Nairobi — March 4–6, 2026. Awarded by the Congress Organising Committee for research under the theme "Redesigning Primary Health Care: Building Resilience amid Global Uncertainty."</p>
+          </div>
+        </div>
+        <div class="research-card reveal" data-reveal>
+          <div class="research-icon"><svg><use href="#i-leaf"/></svg></div>
+          <div>
+            <h3>IRENA NewGen Renewable Energy Accelerator</h3>
+            <p>Selected cohort member, 2026 — for Clisense, my climate-smart agriculture venture.</p>
+          </div>
+        </div>
+        <div class="research-card reveal" data-reveal>
+          <div class="research-icon"><svg><use href="#i-book"/></svg></div>
+          <div>
+            <h3>CMU Africa Bridge Program</h3>
+            <p>Completed the selective preparatory track for graduate study in engineering and technology, Carnegie Mellon University Africa.</p>
+          </div>
+        </div>
+        <div class="research-card reveal" data-reveal>
+          <div class="research-icon"><svg><use href="#i-cap"/></svg></div>
+          <div>
+            <h3>ALU Public Policy Course</h3>
+            <p>Selected participant, run jointly with Ashesi University.</p>
+          </div>
         </div>
       </div>
     </div>
@@ -1045,7 +1095,7 @@
   updateBackToTop();
 
   /* ---------- Active nav link on scroll ---------- */
-  var sections = ['about', 'research', 'connect']
+  var sections = ['about', 'awards', 'research', 'connect']
     .map(function (id) { return document.getElementById(id); })
     .filter(Boolean);
   var navLinks = Array.prototype.slice.call(document.querySelectorAll('[data-nav]'));
