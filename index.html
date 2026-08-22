@@ -345,13 +345,17 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    width: 42px; height: 42px;
+    gap: 0.5rem;
+    height: 42px;
+    padding: 0 1rem;
     border-radius: 12px;
     border: 1px solid var(--line);
     background: var(--surface);
+    font-size: 0.86rem;
+    font-weight: 600;
     transition: transform 0.18s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease, color 0.2s ease;
   }
-  .social-pill svg { width: 19px; height: 19px; }
+  .social-pill svg { width: 18px; height: 18px; flex-shrink: 0; }
   .social-pill:hover {
     transform: translateY(-3px) scale(1.04);
     border-color: var(--accent);
@@ -808,12 +812,12 @@
         <a href="mailto:agbajeayomide001@gmail.com" class="btn btn-ghost">Get in touch <svg width="16" height="16"><use href="#i-mail"/></svg></a>
       </div>
       <div class="hero-socials" aria-label="Social links">
-        <a class="social-pill" href="https://www.linkedin.com/in/agbajeayomide/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
-        <a class="social-pill" href="https://github.com/AgbajeCity" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
-        <a class="social-pill" href="https://x.com/AgbajeCity" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg><use href="#i-x"/></svg></a>
-        <a class="social-pill" href="https://www.instagram.com/agbajecity/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
-        <a class="social-pill" href="https://www.youtube.com/@ayomideagbaje9404" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube"/></svg></a>
-        <a class="social-pill" href="https://t.me/AgbajeCity" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-telegram"/></svg></a>
+        <a class="social-pill" href="https://www.linkedin.com/in/agbajeayomide/" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg><span>LinkedIn</span></a>
+        <a class="social-pill" href="https://github.com/AgbajeCity" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg><span>GitHub</span></a>
+        <a class="social-pill" href="https://x.com/AgbajeCity" target="_blank" rel="noopener"><svg><use href="#i-x"/></svg><span>X</span></a>
+        <a class="social-pill" href="https://www.instagram.com/agbajecity/" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
+        <a class="social-pill" href="https://www.youtube.com/@ayomideagbaje9404" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a>
+        <a class="social-pill" href="https://t.me/AgbajeCity" target="_blank" rel="noopener"><svg><use href="#i-telegram"/></svg><span>Telegram</span></a>
       </div>
     </div>
   </section>
@@ -868,30 +872,6 @@
             <span class="chip">Data Visualisation</span>
             <span class="chip">Policy Development</span>
           </div>
-        </div>
-      </div>
-
-      <!-- Timeline -->
-      <div class="timeline reveal" data-reveal style="margin-top:3.5rem;">
-        <div class="tl-item">
-          <div class="tl-year">2021</div>
-          <div class="tl-title">Life Sciences, Cum Laude — University of Ilorin</div>
-          <p class="tl-desc">Foundational training in biological sciences that feeds directly into the health-informatics side of my work.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2026</div>
-          <div class="tl-title">Software Engineering, First Class Honours — African Leadership University</div>
-          <p class="tl-desc">Focused on data science and machine learning, applied throughout to Clisense and HealthDrive.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">2026</div>
-          <div class="tl-title">Peer-reviewed publication — IJISRT</div>
-          <p class="tl-desc">Published research spanning low-resource speech processing and implementation science.</p>
-        </div>
-        <div class="tl-item">
-          <div class="tl-year">Mar 2026</div>
-          <div class="tl-title">Most Entrepreneurial Researcher — 2nd Primary Health Care Congress</div>
-          <p class="tl-desc">Awarded at Amref International University, Nairobi, for research work under the congress theme "Redesigning Primary Health Care: Building Resilience amid Global Uncertainty."</p>
         </div>
       </div>
     </div>
@@ -1043,13 +1023,6 @@
           </div>
         </div>
         <div class="research-card reveal" data-reveal>
-          <div class="research-icon"><svg><use href="#i-cap"/></svg></div>
-          <div>
-            <h3>ALU Public Policy Course</h3>
-            <p>Selected participant, run jointly with Ashesi University.</p>
-          </div>
-        </div>
-        <div class="research-card reveal" data-reveal>
           <div class="research-icon"><svg><use href="#i-scholar"/></svg></div>
           <div>
             <h3>Research Fellow, AL for Health Network</h3>
@@ -1077,12 +1050,12 @@
           <svg width="16" height="16"><use href="#i-mail"/></svg> agbajeayomide001@gmail.com
         </a>
         <div class="connect-socials" aria-label="Social links">
-          <a class="social-pill" href="https://www.linkedin.com/in/agbajeayomide/" target="_blank" rel="noopener" aria-label="LinkedIn"><svg><use href="#i-linkedin"/></svg></a>
-          <a class="social-pill" href="https://github.com/AgbajeCity" target="_blank" rel="noopener" aria-label="GitHub"><svg><use href="#i-github"/></svg></a>
-          <a class="social-pill" href="https://x.com/AgbajeCity" target="_blank" rel="noopener" aria-label="X (Twitter)"><svg><use href="#i-x"/></svg></a>
-          <a class="social-pill" href="https://www.instagram.com/agbajecity/" target="_blank" rel="noopener" aria-label="Instagram"><svg><use href="#i-instagram"/></svg></a>
-          <a class="social-pill" href="https://www.youtube.com/@ayomideagbaje9404" target="_blank" rel="noopener" aria-label="YouTube"><svg><use href="#i-youtube"/></svg></a>
-          <a class="social-pill" href="https://t.me/AgbajeCity" target="_blank" rel="noopener" aria-label="Telegram"><svg><use href="#i-telegram"/></svg></a>
+          <a class="social-pill" href="https://www.linkedin.com/in/agbajeayomide/" target="_blank" rel="noopener"><svg><use href="#i-linkedin"/></svg><span>LinkedIn</span></a>
+          <a class="social-pill" href="https://github.com/AgbajeCity" target="_blank" rel="noopener"><svg><use href="#i-github"/></svg><span>GitHub</span></a>
+          <a class="social-pill" href="https://x.com/AgbajeCity" target="_blank" rel="noopener"><svg><use href="#i-x"/></svg><span>X</span></a>
+          <a class="social-pill" href="https://www.instagram.com/agbajecity/" target="_blank" rel="noopener"><svg><use href="#i-instagram"/></svg><span>Instagram</span></a>
+          <a class="social-pill" href="https://www.youtube.com/@ayomideagbaje9404" target="_blank" rel="noopener"><svg><use href="#i-youtube"/></svg><span>YouTube</span></a>
+          <a class="social-pill" href="https://t.me/AgbajeCity" target="_blank" rel="noopener"><svg><use href="#i-telegram"/></svg><span>Telegram</span></a>
         </div>
       </div>
     </div>
@@ -1092,7 +1065,7 @@
 
 <footer class="site-footer">
   <div class="wrap footer-inner">
-    <span>&copy; 2026 Ayomide Agbaje. Built with GitHub Pages.</span>
+    <span>&copy; 2026 Ayomide Agbaje.</span>
     <span>
       <a href="#main">Back to top</a>
     </span>
