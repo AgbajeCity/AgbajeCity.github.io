@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>HealthDrive Family Planning Navigator, USSD prototype</title>
+<style>
+:root{--bg:#f4f1ea;--ink:#1d2a2a;--accent:#0f6e5c;--muted:#5d6b6b}
+*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,Segoe UI,Roboto,sans-serif;background:var(--bg);color:var(--ink)}
+.wrap{max-width:1000px;margin:0 auto;padding:24px 16px;display:flex;gap:32px;flex-wrap:wrap;align-items:flex-start;justify-content:center}
+.info{flex:1 1 360px;max-width:460px}h1{font-size:24px;margin:8px 0}p{line-height:1.5}.tag{display:inline-block;background:#fde7c5;color:#7a4a00;font-size:12px;padding:4px 8px;border-radius:6px}
+.phone{width:280px;background:#2b2f33;border-radius:36px;padding:18px 16px 24px;box-shadow:0 10px 30px rgba(0,0,0,.25)}
+.screen{background:#c7d6b8;border-radius:10px;height:290px;padding:12px;font-family:"Courier New",monospace;font-size:14px;line-height:1.35;white-space:pre-wrap;color:#102010;overflow:hidden;border:3px solid #9aaa8c}
+.input{margin-top:8px;background:#e8efe0;border-radius:6px;padding:6px 8px;font-family:"Courier New",monospace;min-height:28px}
+.keys{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-top:14px}
+.keys button{background:#454b51;color:#fff;border:0;border-radius:12px;padding:10px 0;font-size:18px;cursor:pointer}
+.keys button.ok{background:var(--accent)}.keys button.c{background:#7a2e2e}
+.cap{margin-top:14px;font-size:13px;color:var(--muted)}
+.cwh{margin-top:16px;background:#fff;border-radius:12px;padding:12px;font-size:14px;display:none;border-left:4px solid var(--accent)}
+.foot{font-size:12px;color:var(--muted);max-width:1000px;margin:0 auto;padding:0 16px 24px}
+</style></head><body>
+<div class="wrap">
+<div class="info">
+<span class="tag">Prototype for demonstration</span>
+<h1>HealthDrive Family Planning Navigator</h1>
+<p>A counselling pathway on HealthDrive's Unstructured Supplementary Service Data (USSD) service, which works on any basic phone with no internet. Dial the short code, answer a few questions, and get a short answer checked against the World Health Organization (WHO) medical eligibility criteria for contraceptive use. Anything that needs a person goes to a community health worker.</p>
+<p>Try it: press <b>Dial</b>, then use the keypad. Menu names stay discreet ("Wellness") and the service keeps no readable history on the phone.</p>
+<p><a href="HealthDrive_FP_Navigator_demo.mp4">Watch the 40-second walkthrough video</a></p>
+<div class="cwh" id="cwh"><b>Community health worker dashboard</b><br><span id="cwhtext"></span></div>
+</div>
+<div>
+<div class="phone"><div class="screen" id="screen"></div><div class="input" id="inp"></div>
+<div class="keys" id="keys"></div></div>
+<div class="cap" id="cap">Dial *384*7# to start</div>
+</div></div>
+<p class="foot">Prototype screens for the Africa Young Innovators for Health Award, 2026. Message content is illustrative and pending review by HealthDrive's clinical team with Amref Health Africa. It is not medical advice. HealthDrive Technologies LTD, Kigali, Rwanda.</p>
+<script>
+const S={
+start:{t:"HealthDrive\n1 Health check\n2 Wellness\n3 Find a clinic\n4 Talk to a health worker",n:{2:"fp"}},
+fp:{t:"Wellness (private)\n1 Choose a method\n2 Side effects\n3 Missed pill\n4 Emergency help\n0 Back",n:{1:"q_age",3:"missed",4:"ec",0:"start"}},
+q_age:{t:"Choose a method\nYour age?\n1 Under 20\n2 20 to 34\n3 35 or older",n:{1:"q_bf",2:"q_bf",3:"q_smoke"},set:{3:{age35:1}}},
+q_smoke:{t:"Do you smoke?\n1 Yes\n2 No",n:{1:"q_bf",2:"q_bf"},set:{1:{smoke:1}}},
+q_bf:{t:"Are you breastfeeding a baby under 6 weeks old?\n1 Yes\n2 No",n:{1:"q_bp",2:"q_bp"},set:{1:{bf:1}}},
+q_bp:{t:"Has a health worker told you that you have high blood pressure?\n1 Yes\n2 No\n3 Not sure",n:{1:"result",2:"result",3:"result"},set:{1:{bp:1},3:{bpunsure:1}}},
+missed:{t:"Missed pill\nHow many pills missed in a row?\n1 One or two\n2 Three or more",n:{1:"m1",2:"m2"}},
+m1:{t:"Take the missed pill now and the next one at your usual time. You are still protected.\n9 Talk to a health worker\n0 Menu",n:{9:"cwh",0:"fp"}},
+m2:{t:"Take one pill now. Use condoms for the next 7 days. If you had sex in the last 5 days, ask about emergency help.\n9 Talk to a health worker\n0 Menu",n:{9:"cwh",0:"fp"},flag:"Missed 3+ pills"},
+ec:{t:"Emergency help\nDo you have pain in your lower belly with a missed period?\n1 Yes\n2 No",n:{1:"urgent",2:"ecinfo"}},
+urgent:{t:"This needs care today. A health worker will call you within 1 hour.\nNearest clinic:\nIkire PHC, 4 km\n0 Menu",n:{0:"fp"},flag:"URGENT: lower abdominal pain with missed period"},
+ecinfo:{t:"Emergency pills work best within 3 days of sex (up to 5 days). A pharmacy or clinic can give them.\n3 Find a clinic\n0 Menu",n:{3:"clinic",0:"fp"}},
+clinic:{t:"Nearest clinics\n1 Ikire PHC, 4 km\n2 Osogbo GH, 18 km\nReply 1 to book",n:{1:"booked"}},
+booked:{t:"Booked: Ikire PHC tomorrow. Your health worker will see this booking.\n0 Menu",n:{0:"fp"},flag:"Clinic booking"},
+cwh:{t:"Request sent. Your community health worker will call you on this number.\n0 Menu",n:{0:"fp"},flag:"Callback requested"}
+};
+let st="",ctx={},buf="";const sc=document.getElementById('screen'),inp=document.getElementById('inp');
+function show(k){st=k;let s=S[k];let t=s.t;if(k=="result")t=result();sc.textContent=t;inp.textContent="";buf="";if(s&&s.flag)flag(s.flag)}
+S.result={t:"",n:{9:"cwh",3:"clinic",0:"fp"}};
+function result(){const no=[];if(ctx.bf)no.push("breastfeeding under 6 weeks");if(ctx.age35&&ctx.smoke)no.push("35+ and smoking");if(ctx.bp)no.push("high blood pressure");
+let t;if(ctx.bf){t="Pills with oestrogen are not suitable while breastfeeding a baby under 6 weeks.\nOptions to discuss: progestin-only pill, implant, condoms.";flag("Method counselling: "+no.join(", "))}
+else if(no.length){t="Pills with oestrogen are not suitable for you ("+no.join(", ")+").\nOptions to discuss: implant, copper IUD, condoms.";flag("Method counselling: "+no.join(", "))}
+else t="Many methods suit you: pill, implant, injection, copper IUD, condoms.";
+if(ctx.bpunsure)t+="\nCheck your blood pressure at the clinic first.";
+return t+"\n9 Health worker 3 Clinic 0 Menu"}
+function flag(x){const c=document.getElementById('cwh');c.style.display='block';document.getElementById('cwhtext').innerHTML='New case: '+x+'<br>Stated conditions only. No name stored.'}
+function press(k){if(!st){if(k=="D"){sc.textContent="Dialling *384*7# ...";setTimeout(()=>{ctx={};show("start")},700)}return}
+if(k=="C"){buf=buf.slice(0,-1);inp.textContent=buf;return}
+if(k=="D"){const s=S[st];const nx=s.n&&s.n[buf];if(nx){if(s.set&&s.set[buf])Object.assign(ctx,s.set[buf]);show(nx)}else{inp.textContent="Invalid choice";buf=""}return}
+buf+=k;inp.textContent=buf}
+const kd=document.getElementById('keys');["1","2","3","4","5","6","7","8","9","C","0","D"].forEach(k=>{const b=document.createElement('button');b.textContent=k=="D"?(st?"Send":"Dial"):k=="C"?"Del":k;if(k=="D")b.className="ok";if(k=="C")b.className="c";b.onclick=()=>{press(k);if(k=="D")b.textContent="Send"};b.dataset.k=k;kd.appendChild(b)});
+sc.textContent="\n\n   Dial *384*7#";
+window.demo=async function(seq){const w=ms=>new Promise(r=>setTimeout(r,ms));for(const s of seq){if(s.cap)document.getElementById('cap').textContent=s.cap;for(const ch of s.k){document.querySelector(`[data-k="${ch}"]`).click();await w(450)}await w(s.wait||2200)}};
+</script></body></html>
